@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+
+<!-- 
+
+Hi! It's probably obvious, though I'll point it out here, that I am not responsible
+for either of the two very useful sites that appear on this page. Also, I am not much
+of a web designer! So this barely works, but it's useful to me, and if it's useful to
+you that's great. Maybe someone who actually knows how to do this could make it better?
+
+If you pass this a page number in the URL:
+
+finneganswake.html?page=250
+
+it will attempt to take you to that page.
+
+Again, though: I know nothing about programming & this will probably break!
+
+-->
+
+<head>
+  <title>Finnegans Wake + FWEET</title>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <script language="javascript"><!--
+
+var currentpage = 3;
+var  lefturl = "http://www.trentu.ca/faculty/jjoyce/fw-"+currentpage+".htm";
+var	righturl = "http://www.fweet.org/cgi-bin/fw_grep.cgi?r=1&f=100&b=1&i=1&s=%5E"+pad(currentpage,3);
+
+var passedpage = getUrlVars()["page"]; // check if there's a page in the URL
+
+if(passedpage) {
+	currentpage = parseInt(passedpage);
+	if(currentpage < 3) {
+		currentpage = 3;
+	}
+	if(currentpage > 628) {
+		currentpage=628;
+	}
+}
+
+function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+    vars[key] = value;
+  });
+  return vars;
+}
+
+function pad(n, width, z) {
+  z = z || '0';
+  n = n + '';
+  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+}
+
+function reload() {
+	lefturl = "http://www.trentu.ca/faculty/jjoyce/fw-"+currentpage+".htm";
+	righturl = "http://www.fweet.org/cgi-bin/fw_grep.cgi?r=1&f=100&b=1&i=1&s=%5E"+pad(currentpage,3);
+  document.getElementById('leftframe').src = lefturl;
+  document.getElementById('rightframe').src = righturl;
+  window.history.pushState("object or string", "Title", "?page="+currentpage);
+}
+
+function leftclick() {
+	if(currentpage > 3) {
+		currentpage--;
+	} else {
+		currentpage = 628;
+	}
+	reload();
+}
+
+function rightclick() {
+	if(currentpage < 628) {
+		currentpage++;
+	} else {
+		currentpage = 3;
+	}
+	reload();
+}
+
+
+  --></script>
+  <style type="text/css" media="all"><!--
+
+html {
+	height:100%; /* firefox needs this */
+}
+
+body {
+	width:100%;
+	height:100%;
+	margin:0;
+	background:black;
+}
+
+iframe {
+	width:100%;
+	height:100%;
+	border:0;
+}
+
+.container {
+	position:static;
+	width:1200px;
+	height:100%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.left {
+	position:relative;
+	top:0;
+	left:0;
+	width:500px;
+	height:100%;
+	float:left;
+}
+
+.right {
+	position:relative;
+	top:0;
+	left:0;
+	width:100%;
+	min-width:500px;
+	max-width:700px;
+	height:100%;
+	float:right;
+}
+
+.leftarrow,.rightarrow {
+	background-color:black;
+	background-color:rgba(0,0,0,.5);
+	color:white;
+	font-family:"Futura";
+	font-weight:bold;
+	font-size:40px;
+	width:50px;
+	height:50px;
+	text-align:center;
+	z-index:99999;
+	position:fixed;
+	top:0px;
+}
+
+.leftarrow {
+	border-bottom-right-radius:10px;
+	left:0;
+}
+
+.rightarrow {
+	border-bottom-left-radius:10px;
+	right:0;
+}
+
+.frame {
+	position:absolute;
+}
+  --></style>
+</head>
+
+<body onLoad="reload();">
+	<div class="container">
+		<div class="left">
+			<iframe id="leftframe"></iframe>
+		</div>
+		<div class="right">
+			<iframe id="rightframe"></iframe>
+		</div>
+	</div>
+	<a href="javascript:leftclick();"><nav class="leftarrow">&lt;</nav></a>
+	<a href="javascript:rightclick();"><nav class="rightarrow">&gt;</nav></a>
+</body>
+</html>
