@@ -1,7 +1,7 @@
 finnegans-wake
 ==============
 
-An easy way to read both _Finnegans Wake_ and the FWEET annotations. This HTML page will load pages from _Finnegans Wake_ 
+An easy way to read both James Joyce's _Finnegans Wake_ and the FWEET annotations. This HTML page will load pages from _Finnegans Wake_ 
 (from http://www.trentu.ca/faculty/jjoyce/) and FWEET (http://www.fweet.org) in iframes on the same page. This will work
 either locally or remotely. Buttons in the upper left and right corners let you go forward or backwards a page. Links in 
 both sites work, though clicking them may cause the pages to get out of synch. 
