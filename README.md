@@ -16,7 +16,7 @@ http://withhiddennoise.net/tempo/finneganswake.html?page=250
 
 it will attempt to go to page 250; otherwise, it starts at the beginning. 
 
-If you don't like the defaults, you can change the widths of the left and right frames by changing the values after 
+If you don't like the defaults, you can change the widths of the left and right frames by changing the numbers after 
 "leftwidth" and "rightwidth" respectively:
 
 http://withhiddennoise.net/tempo/finneganswake.html?leftwidth=500&rightwidth=700&page=250
