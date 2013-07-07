@@ -19,7 +19,7 @@ it will attempt to go to page 250; otherwise, it starts at the beginning.
 I've tested this in Mac browsers and it works reasonably well; I don't know how it will look on anything else. I am
 not much of a programmer and this was put together extremely quickly; this could certainly be improved. There are a
 couple of spots where it runs into trouble – pages that don't exist – but keep pressing the forward or back buttons
-and you'll get past it. A couple of the wider pages of the _Wake_ cause troubles as well.
+and you'll get past it. A couple of the wider pages of the _Wake_ cause troubles as well (p. 44 is an example).
 
 I am not responsible, of course, for either the online _Finnegans Wake_ or FWEET, though I'm extremely grateful that 
 both of them are there!
