@@ -1,22 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
 
-<!-- 
-
-Hi! It's probably obvious, though I'll point it out here, that I am not responsible
-for either of the two very useful sites that appear on this page. Also, I am not much
-of a web designer! So this barely works, but it's useful to me, and if it's useful to
-you that's great. Maybe someone who actually knows how to do this could make it better?
-
-If you pass this a page number in the URL:
-
-finneganswake.html?page=250
-
-it will attempt to take you to that page.
-
-Again, though: I know nothing about programming & this will probably break!
-
--->
+<!-- Documentation here: https://github.com/dbvisel/finnegans-wake -->
 
 <head>
   <title>Finnegans Wake + FWEET</title>
@@ -24,10 +9,15 @@ Again, though: I know nothing about programming & this will probably break!
   <script language="javascript"><!--
 
 var currentpage = 3;
-var  lefturl = "http://www.trentu.ca/faculty/jjoyce/fw-"+currentpage+".htm";
+var	lefturl = "http://www.trentu.ca/faculty/jjoyce/fw-"+currentpage+".htm";
 var	righturl = "http://www.fweet.org/cgi-bin/fw_grep.cgi?r=1&f=100&b=1&i=1&s=%5E"+pad(currentpage,3);
+var leftwidth = 500;
+var rightwidth = 700;
+
 
 var passedpage = getUrlVars()["page"]; // check if there's a page in the URL
+var passedleftwidth = getUrlVars()["leftwidth"]; // check if there's a left width in the URL
+var passedrightwidth = getUrlVars()["rightwidth"]; // check if there's a right width in the URL
 
 if(passedpage) {
 	currentpage = parseInt(passedpage);
@@ -38,6 +28,13 @@ if(passedpage) {
 		currentpage=628;
 	}
 }
+if(passedleftwidth) {
+	leftwidth = parseInt(passedleftwidth);
+}
+if(passedrightwidth) {
+	rightwidth = parseInt(passedrightwidth);
+}
+
 
 function getUrlVars() {
   var vars = {};
@@ -58,7 +55,12 @@ function reload() {
 	righturl = "http://www.fweet.org/cgi-bin/fw_grep.cgi?r=1&f=100&b=1&i=1&s=%5E"+pad(currentpage,3);
   document.getElementById('leftframe').src = lefturl;
   document.getElementById('rightframe').src = righturl;
-  window.history.pushState("object or string", "Title", "?page="+currentpage);
+  document.getElementById('leftdiv').style.width = leftwidth+"px";
+  document.getElementById('rightdiv').style.width = rightwidth+"px";
+  document.getElementById('container').style.width = (leftwidth+rightwidth)+"px";
+
+  var newurl = "?leftwidth="+leftwidth+"&rightwidth="+rightwidth+"&page="+currentpage+;
+  window.history.pushState("object or string", "Title", newurl);
 }
 
 function leftclick() {
@@ -100,7 +102,7 @@ iframe {
 	border:0;
 }
 
-.container {
+#container {
 	position:static;
 	width:1200px;
 	height:100%;
@@ -108,7 +110,7 @@ iframe {
 	margin-right:auto;
 }
 
-.left {
+#leftdiv {
 	position:relative;
 	top:0;
 	left:0;
@@ -117,7 +119,7 @@ iframe {
 	float:left;
 }
 
-.right {
+#rightdiv {
 	position:relative;
 	top:0;
 	left:0;
@@ -160,11 +162,11 @@ iframe {
 </head>
 
 <body onLoad="reload();">
-	<div class="container">
-		<div class="left">
+	<div id="container">
+		<div id="leftdiv">
 			<iframe id="leftframe"></iframe>
 		</div>
-		<div class="right">
+		<div id="rightdiv">
 			<iframe id="rightframe"></iframe>
 		</div>
 	</div>
