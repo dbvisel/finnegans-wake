@@ -2,14 +2,17 @@ finnegans-wake
 ==============
 
 An easy way to read both _Finnegans Wake_ and the FWEET annotations. This HTML page will load pages from _Finnegans Wake_ 
-(from http://www.trentu.ca/faculty/jjoyce/) and FWEET (http://www.fweet.org) in iframes on the same page. Buttons in
-the upper left and right corners let you go forward or backwards a page. A version is online here:
+(from http://www.trentu.ca/faculty/jjoyce/) and FWEET (http://www.fweet.org) in iframes on the same page. This will work
+either locally or remotely. Buttons in the upper left and right corners let you go forward or backwards a page. Links in 
+both sites work, though clicking them may cause the pages to get out of synch. 
+
+A version is online here:
 
 http://withhiddennoise.net/tempo/finneganswake.html
 
-If you invoke this like this:
+If you invoke this with a page number like this:
 
-finneganswake.html?page=250
+http://withhiddennoise.net/tempo/finneganswake.html?page=250
 
 it will attempt to go to page 250; otherwise, it starts at the beginning. 
 
