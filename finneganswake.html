@@ -9,8 +9,8 @@
   <script language="javascript"><!--
 
 var currentpage = 3;
-var	lefturl = "http://www.trentu.ca/faculty/jjoyce/fw-"+currentpage+".htm";
-var	righturl = "http://www.fweet.org/cgi-bin/fw_grep.cgi?r=1&f=100&b=1&i=1&s=%5E"+pad(currentpage,3);
+var lefturl = "http://www.trentu.ca/faculty/jjoyce/fw-"+currentpage+".htm";
+var righturl = "http://www.fweet.org/cgi-bin/fw_grep.cgi?r=1&f=100&b=1&i=1&s=%5E"+pad(currentpage,3);
 var leftwidth = 500;
 var rightwidth = 700;
 
@@ -37,11 +37,11 @@ if(passedrightwidth) {
 
 
 function getUrlVars() {
-  var vars = {};
-  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-    vars[key] = value;
-  });
-  return vars;
+	var vars = {};
+	var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+		vars[key] = value;
+	});
+	return vars;
 }
 
 function pad(n, width, z) {
@@ -53,14 +53,14 @@ function pad(n, width, z) {
 function reload() {
 	lefturl = "http://www.trentu.ca/faculty/jjoyce/fw-"+currentpage+".htm";
 	righturl = "http://www.fweet.org/cgi-bin/fw_grep.cgi?r=1&f=100&b=1&i=1&s=%5E"+pad(currentpage,3);
-  document.getElementById('leftframe').src = lefturl;
-  document.getElementById('rightframe').src = righturl;
-  document.getElementById('leftdiv').style.width = leftwidth+"px";
-  document.getElementById('rightdiv').style.width = rightwidth+"px";
-  document.getElementById('container').style.width = (leftwidth+rightwidth)+"px";
+ 	document.getElementById('leftframe').src = lefturl;
+ 	document.getElementById('rightframe').src = righturl;
+ 	document.getElementById('leftdiv').style.width = leftwidth+"px";
+ 	document.getElementById('rightdiv').style.width = rightwidth+"px";
+ 	document.getElementById('container').style.width = (leftwidth+rightwidth)+"px";
 
-  var newurl = "?leftwidth="+leftwidth+"&rightwidth="+rightwidth+"&page="+currentpage+;
-  window.history.pushState("object or string", "Title", newurl);
+	var newurl = "?leftwidth="+leftwidth+"&rightwidth="+rightwidth+"&page="+currentpage;
+	window.history.pushState("object or string", "Title", newurl);
 }
 
 function leftclick() {
